@@ -1,6 +1,6 @@
 /* Mi Gym · service worker: la app funciona sin conexión.
    Si cambias algún archivo, sube el número de versión para que el iPhone descargue lo nuevo. */
-const VERSION = 'mi-gym-v6';
+const VERSION = 'mi-gym-v7';
 const CORE = [
   './',
   './index.html',

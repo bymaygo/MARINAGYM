@@ -10,8 +10,9 @@ GYM — cómo subirla a GitHub Pages y ponerla en el iPhone
 2. SUBIR LOS ARCHIVOS
    - En el repositorio vacío pulsa "uploading an existing file"
      (o Add file > Upload files).
-   - Abre la carpeta mi-gym del zip, selecciona TODOS los archivos
-     (Cmd + A) y arrástralos. No hay subcarpetas: todo va suelto.
+   - Abre la carpeta mi-gym del zip y arrastra TODO LO DE DENTRO
+     (index.html, manifest.webmanifest, sw.js, .nojekyll, icons, splash),
+     no la carpeta mi-gym en sí.
      Ojo: .nojekyll es un archivo oculto. En Mac, en Finder pulsa
      Cmd + Mayús + . para verlo. Si no se sube no pasa nada grave.
    - Abajo: "Commit changes".
@@ -37,6 +38,6 @@ GYM — cómo subirla a GitHub Pages y ponerla en el iPhone
 6. ACTUALIZAR LA APP MÁS ADELANTE
    - Sube el index.html nuevo al repositorio (Add file > Upload files,
      reemplaza el antiguo) y "Commit changes".
-   - En sw.js cambia la línea VERSION (por ejemplo mi-gym-v6 > mi-gym-v7)
+   - En sw.js cambia la línea VERSION (por ejemplo mi-gym-v5 > mi-gym-v6)
      para que el iPhone descargue la versión nueva.
    - Cierra la app del todo y vuelve a abrirla (a veces hace falta dos veces).

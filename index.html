@@ -1184,6 +1184,10 @@ input,select,textarea{font-size:max(16px,1em)}
 html:not(.mock),html:not(.mock) body{height:100%;overflow:hidden;overscroll-behavior:none}
 html:not(.mock) #root{position:fixed;inset:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain}
 html:not(.mock) #ov.ov{overflow-x:hidden}
+/* iOS 26 deja una franja abajo en las capas fijas a pantalla completa: medimos la pantalla real (--appH) y las anclamos arriba con esa altura */
+html:not(.mock) #root,html:not(.mock) .ov,html:not(.mock) .restfull,html:not(.mock) .sheetwrap{top:0!important;bottom:auto!important;height:var(--appH,100lvh)!important}
+html:not(.mock),html:not(.mock) body{height:var(--appH,100lvh)}
+html:not(.mock) #navc{bottom:auto;top:calc(var(--appH,100lvh) - env(safe-area-inset-bottom) - 16px - 60px)}
 </style>
 </head>
 <body>
@@ -2537,6 +2541,9 @@ try{matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{re
 let MOCK=false;
 function appScroller(){return MOCK?document.querySelector('.pscroll'):document.getElementById('root')}
 function appScrollTop(){const sc=appScroller();if(sc)sc.scrollTop=0;window.scrollTo(0,0)}
+/* altura real de la pantalla: en la app instalada usamos la de la pantalla física (iOS 26 da una más corta) */
+function setAppH(){let h=window.innerHeight;try{const sa=(window.navigator.standalone===true)||matchMedia('(display-mode: standalone)').matches;if(sa){const sh=Math.max(screen.height,screen.width),sw=Math.min(screen.height,screen.width);const portrait=innerHeight>=innerWidth;const full=portrait?sh:sw;if(full>h&&full-h<140)h=full}}catch(e){}document.documentElement.style.setProperty('--appH',h+'px')}
+setAppH();addEventListener('resize',()=>{if(document.activeElement&&/^(INPUT|TEXTAREA)$/.test(document.activeElement.tagName))return;setAppH()});addEventListener('orientationchange',()=>setTimeout(setAppH,300));addEventListener('pageshow',setAppH);document.addEventListener('visibilitychange',()=>{if(!document.hidden)setTimeout(setAppH,100)});
 /* iOS: al cerrar el teclado el visor a veces se queda desplazado; lo devolvemos a su sitio */
 document.addEventListener('focusout',e=>{if(MOCK)return;const t=e.target;if(!t||!/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))return;setTimeout(()=>{const a=document.activeElement;if(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName))return;if(window.scrollY||window.scrollX)window.scrollTo(0,0)},60)});
 function setupMock(){if(BUILD_EXPORT){const t=document.querySelector('.mocktoggle');if(t)t.remove();return}
