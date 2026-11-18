@@ -1,0 +1,42 @@
+GYM — cómo subirla a GitHub Pages y ponerla en el iPhone
+=========================================================
+
+1. CREAR EL REPOSITORIO
+   - Entra en github.com (crea cuenta si no tienes, es gratis).
+   - Arriba a la derecha: "+" > New repository.
+   - Nombre: mi-gym   (será parte de la dirección)
+   - Márcalo como Public y dale a "Create repository".
+
+2. SUBIR LOS ARCHIVOS
+   - En el repositorio vacío pulsa "uploading an existing file"
+     (o Add file > Upload files).
+   - Abre la carpeta mi-gym del zip, selecciona TODOS los archivos
+     (Cmd + A) y arrástralos. No hay subcarpetas: todo va suelto.
+     Ojo: .nojekyll es un archivo oculto. En Mac, en Finder pulsa
+     Cmd + Mayús + . para verlo. Si no se sube no pasa nada grave.
+   - Abajo: "Commit changes".
+
+3. ACTIVAR LA WEB
+   - En el repositorio: Settings > Pages (menú izquierdo).
+   - Source: "Deploy from a branch".
+   - Branch: main  ·  carpeta: / (root)  > Save.
+   - Espera 1–2 minutos. Arriba aparecerá la dirección:
+     https://TU-USUARIO.github.io/mi-gym/
+
+4. INSTALARLA EN EL IPHONE
+   - Abre esa dirección en SAFARI (no en Chrome ni Instagram).
+   - Botón Compartir (cuadrado con flecha) > "Añadir a pantalla de inicio".
+   - Ábrela siempre desde el icono: así va a pantalla completa
+     y funciona sin internet.
+
+5. TUS DATOS
+   - Se guardan solo en tu iPhone, dentro de la app instalada.
+   - Haz copias de vez en cuando: Ajustes > Copia de seguridad > Exportar.
+   - Si borras la app del inicio, se borran sus datos.
+
+6. ACTUALIZAR LA APP MÁS ADELANTE
+   - Sube el index.html nuevo al repositorio (Add file > Upload files,
+     reemplaza el antiguo) y "Commit changes".
+   - En sw.js cambia la línea VERSION (por ejemplo mi-gym-v6 > mi-gym-v7)
+     para que el iPhone descargue la versión nueva.
+   - Cierra la app del todo y vuelve a abrirla (a veces hace falta dos veces).
